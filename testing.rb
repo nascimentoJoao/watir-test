@@ -7,5 +7,5 @@ for i in (0..40).step(5)
     sleep 0.1
 end
 #browser.div(jsname: 'W85ice').send_keys('PUCRS')
-
+# input > find by name
 sleep 10
