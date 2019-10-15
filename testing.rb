@@ -6,6 +6,10 @@ open('StopCidadaniaLogTest.csv', 'a') { |f|
   f.puts "InputTest,InputValue,Error,Section,Commentary"
 }
 
+open('StopCidadaniaLogTest.csv', 'a') { |f|
+  f.puts "FirstAction, tela criada com sucesso,-,-,iniciando fluxo de testes"
+}
+
 criar_jogo = Thread.new {
   sizing = true
   while sizing
@@ -18,10 +22,6 @@ criar_jogo = Thread.new {
   sleep 2
   #### check email e nick
   variable = browser.input(class: 'email').send_keys('pomp.com')
- 
-  open('StopCidadaniaLogTest.csv', 'a') { |f|
-    f.puts "Email,pomp.com,Email inválido,Criação de sala"
-  }
 
   sleep 3
   browser.input(class: 'nick').send_keys('p')
@@ -38,6 +38,9 @@ criar_jogo = Thread.new {
   invalid_nick_msg_create_game = browser.p(class: 'invalidNickMsg').text
 
   if invalid_nick_msg_create_game == 'Apelido inválido'
+    open('StopCidadaniaLogTest.csv', 'a') { |f|
+      f.puts "Nickname,p,Apelido inválido,Criação de sala"
+    }
     puts "Teste com nick inválido passou. Na criação da sala de jogo"
   end
 
@@ -51,12 +54,18 @@ criar_jogo = Thread.new {
   invalid_msg_create_game = browser.p(class: 'invalidEmailMsg').text
 
   if invalid_msg_create_game != 'Email inválido'
+    open('StopCidadaniaLogTest.csv', 'a') { |f|
+      f.puts "Email,pompermaier@mail.com,Email válido,Criação de sala"
+    }
     puts "Teste com email válido passou. Na criação da sala de jogo"
   end
 
   invalid_nick_msg_create_game = browser.p(class: 'invalidNickMsg').text
 
   if invalid_nick_msg_create_game != 'Apelido inválido'
+    open('StopCidadaniaLogTest.csv', 'a') { |f|
+      f.puts "Nickname,pomper_tester,Apelido válido,Criação de sala"
+    }
     puts "Teste com nick válido passou. Na criação da sala de jogo"
   end
 
@@ -94,12 +103,22 @@ entrar_jogo = Thread.new {
   invalid_email_msg_join_game = browser2.p(class: 'invalidEmailMsg').text
 
   if invalid_email_msg_join_game == 'Email inválido'
+
+    open('StopCidadaniaLogTest.csv', 'a') { |f|
+      f.puts "Email,pomp.com,Email inválido,Entrar no jogo"
+    }
+
     puts "Teste com email inválido passou. Entrar na sala de jogo"
   end
 
   invalid_nick_msg_join_game = browser2.p(class: 'invalidNickMsg').text
 
   if invalid_nick_msg_join_game == 'Apelido inválido'
+
+    open('StopCidadaniaLogTest.csv', 'a') { |f|
+      f.puts "Nickname,p,Apelido inválido,Entrar no jogo"
+    }
+
     puts "Teste com nick inválido passou. Entrar na sala de jogo"
   end
 
