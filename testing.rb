@@ -2,6 +2,10 @@ require 'watir';
 
 browser = Watir::Browser.start 'http://localhost:8080'
 
+open('StopCidadaniaLogTest.csv', 'a') { |f|
+  f.puts "InputTest,InputValue,Error,Section,Commentary"
+}
+
 criar_jogo = Thread.new {
   sizing = true
   while sizing
@@ -13,13 +17,21 @@ criar_jogo = Thread.new {
   browser.a(class: 'btn create').click
   sleep 2
   #### check email e nick
-  browser.input(class: 'email').send_keys('pomp.com')
+  variable = browser.input(class: 'email').send_keys('pomp.com')
+ 
+  open('StopCidadaniaLogTest.csv', 'a') { |f|
+    f.puts "Email,pomp.com,Email inválido,Criação de sala"
+  }
+
   sleep 3
   browser.input(class: 'nick').send_keys('p')
 
   invalid_msg_create_game = browser.p(class: 'invalidEmailMsg').text
 
   if invalid_msg_create_game == 'Email inválido'
+    open('StopCidadaniaLogTest.csv', 'a') { |f|
+      f.puts "Email,pomp.com,Email inválido,Criação de sala"
+    }
     puts "Teste com email inválido passou. Na criação da sala de jogo"
   end
 
