@@ -1,5 +1,9 @@
 require 'watir';
 
+
+puts "\e[36m#{"Running... 4 tests"}\e[0m" 
+
+
 browser = Watir::Browser.start 'http://localhost:8080'
 
 open('StopCidadaniaLogTest.csv', 'a') { |f|
@@ -154,7 +158,7 @@ entrar_jogo = Thread.new {
   #######
   sleep 3
   browser2.input(class: 'id').send_keys :backspace
-  browser2.input(class: 'id').send_keys('10041')
+  browser2.input(class: 'id').send_keys('10056')
   sleep 1
   browser2.a(class: 'btn join').click
 }
@@ -175,4 +179,6 @@ while waiting_player
 end
 browser.a(class: 'btn init').click
 
-sleep 100
+puts "\e[32m#{"All tests passed!"}\e[0m"
+
+sleep 5
