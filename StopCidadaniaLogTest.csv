@@ -1,0 +1,14 @@
+InputTest,InputValue,Error,Section,Commentary
+FirstAction, tela criada com sucesso,-,-,iniciando fluxo de testes
+Email,pomp.com,Email inválido,Criação de sala
+Email,pompermaier@mail.com,Email válido,Criação de sala
+Email,pomp.com,Email inválido,Entrar no jogo
+Email,pompermaier@mail.com,Email válido,Entrar no jogo
+InputTest,InputValue,Error,Section,Commentary
+FirstAction, tela criada com sucesso,-,-,iniciando fluxo de testes
+Email,pomp.com,Email inválido,Criação de sala
+Nickname,p,Apelido inválido,Criação de sala
+Email,pompermaier@mail.com,Email válido,Criação de sala
+Nickname,pomper_tester,Apelido válido,Criação de sala
+Email,pomp.com,Email inválido,Entrar no jogo
+Nickname,p,Apelido inválido,Entrar no jogo
